@@ -5,7 +5,7 @@
  */
 package ModeloDTO;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+
 import edu.sergioarboleda.rumbacoin.Parche;
 import edu.sergioarboleda.rumbacoin.Usuario;
 import java.util.ArrayList;
