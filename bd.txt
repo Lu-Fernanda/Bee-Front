@@ -1,0 +1,54 @@
+CREATE DATABASE rumbacoin;
+use rumbacoin;
+
+
+create table billetera(
+id INT primary key,
+dinero INT
+);
+INSERT INTO billetera VALUES (54321,10000);
+INSERT INTO billetera VALUES (543,10000);
+INSERT INTO billetera VALUES (123,0);
+INSERT INTO billetera VALUES (122,0);
+
+create table usuario(
+id SERIAL primary key,
+nombre VARCHAR(40),
+idBilletera INT,
+FOREIGN KEY (idBilletera) REFERENCES billetera(id)
+);
+INSERT INTO usuario VALUES (12345,'Luisa Ariza',54321);
+INSERT INTO usuario VALUES (123,'Laura Rmirez',543);
+
+create table Parche(
+id SERIAL primary key ,
+pswd VARCHAR(35),
+nombre VARCHAR (30), 
+descripcion VARCHAR (50),
+valorObjetivo INT,
+valorMinimo INT,
+idUsuario INT,
+estado bool,
+idBilletera INT,
+FOREIGN KEY (idUsuario) REFERENCES Usuario(id),
+FOREIGN KEY (idBilletera) REFERENCES Billetera(id)
+);
+
+INSERT INTO parche VALUES (1031,'q1w2e3r4t5y6u7i8o9p0','Fiesta de Pau','Para comprar la decoración y las cervezas',800000,50000,12345,true,123);
+INSERT INTO parche VALUES (1032,'mkjnbhy7654321qwsazx','Fiesta de Lau','Para comprar la decoración y las cervezas',800000,50000,123,true,122);
+
+
+
+create table Transferencia(
+id SERIAL primary key,
+pswd VARCHAR(35),
+monto INT,
+idUsuario INT,
+idParche INT,
+FOREIGN KEY (idUsuario) REFERENCES Usuario(id),
+FOREIGN KEY (idParche) REFERENCES Parche(id)
+);
+INSERT INTO Transferencia VALUES (1,'q1w2e3r4t5y6u7i8o9p0',50000,12345,1031);
+INSERT INTO Transferencia VALUES (2,'mkjnbhy7654321qwsazx',50000,123,1032);
+
+
